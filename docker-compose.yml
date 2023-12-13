@@ -1,0 +1,64 @@
+version: '3.9'
+
+services:
+  server:
+    image: itzg/minecraft-server
+    stdin_open: true
+    tty: true
+    user: $CURRENT_UID:$CURRENT_GID
+    restart: unless-stopped
+    ports:
+      - 25580:25565
+    volumes:
+      - ./server:/data
+    environment:
+      EULA: TRUE
+      MEMORY: 8G
+      TYPE: PUFFERFISH
+      VERSION: 1.20.2
+      PUFFERFISH_BUILD: 34
+
+      ONLINE_MODE: false
+      MOTD: Експеременти Зьозюна
+      MAX_PLAYERS: 64
+      ALLOW_NETHER: false
+      VIEW_DISTANCE: 10
+
+      #PLUGINS: |
+      #  https://download.geysermc.org/v2/projects/geyser/versions/latest/builds/latest/downloads/spigot
+      #  https://download.geysermc.org/v2/projects/floodgate/versions/latest/builds/latest/downloads/spigot
+      #  https://cdn.modrinth.com/data/qvdtDX3s/versions/diNvP5DO/multiverse-inventories-4.2.6.jar
+
+      #PLUGINS: |
+      #  https://cdn.modrinth.com/data/qvdtDX3s/versions/diNvP5DO/multiverse-inventories-4.2.6.jar
+
+      # GSit, SkinsRestorer, LuckPerms, PlaceholderAPI, spark, Plugin Hide, Maintenance
+      # SPIGET_RESOURCES: 62325,2124,28140,6245,57242,68767,40699
+
+      SPIGET_RESOURCES: 2124,57242,68767
+
+      #MODRINTH_PROJECTS: |
+      #  terra:beta
+      #  viaversion
+      #  viabackwards
+      #  multiverse-core
+      #  advancedserverlist
+      #  bluemap
+      #  coreprotect
+      #  eht
+      #  tab-was-taken
+      #  itemswapper
+
+      MODRINTH_PROJECTS: |
+        viaversion
+        viabackwards
+        multiverse-core
+        eht
+        tab-was-taken
+        advancedserverlist
+
+  maven:
+    image: maven
+    working_dir: /app
+    volumes:
+      - ./plugin:/app:cached

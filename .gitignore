@@ -1,0 +1,9 @@
+plugin/target
+server/**
+!server/config
+!server/config/paper-global.yml
+!server/config/paper-world-defaults.yml
+!server/bukkit.yml
+!server/pufferfish.yml
+!server/spigot.yml
+!server/plugins/PL-Hide/config.yml

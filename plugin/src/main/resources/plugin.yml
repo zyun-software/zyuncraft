@@ -1,0 +1,18 @@
+name: ZyunCraftCore
+version: 1.0
+api-version: 1.20
+author: ZyunSoftware
+main: com.zyunsoftware.ZyunCraftCorePlugin
+description: Основа сервера
+
+commands:
+  допомога:
+    usage: §c/допомога
+  пп:
+    usage: §c/пп <псевдонім> <повідомлення>
+  в:
+    usage: §c/в <повідомлення>
+  я:
+    usage: §c/я <дія>
+  число:
+    usage: §c/число <від> <до>
